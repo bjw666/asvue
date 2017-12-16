@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <!-- 点击显示隐藏 -->
+    <div id="app">
+        <button type="" @click="change">显示/隐藏</button>
+        <div v-show="flag" style="width:100px;height:100px;background:red;"></div>
+    </div>
+</body>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            flag:true
+        },
+        methods:{
+            change(){
+                this.flag = !this.flag
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #app div{
+            width: 250px;
+            height: 250px;
+            position: absolute;
+        }
+        #app .hello{
+            background: red;
+            top:0;
+            left: 0;
+
+        }
+        #app .world{
+            background: blueviolet;
+            top:0;
+            right: 0;
+        }
+    </style>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <div class="hello" v-drag>
+            
+        </div>
+        <div class="world" v-drag>
+
+        </div>
+    </div>
+</body>
+<script>
+    Vue.directive('drag',function(el){
+        console.log(el);
+        el.onmousedown = function(event){
+            var disX = event.clientX-el.offsetLeft;
+            var disY = event.clientY-el.offsetTop;
+       
+            document.onmousemove = function(event){
+                var l = event.clientX-disX;
+                var t = event.clientY-disY;
+                el.style.left=l+"px";
+                el.d.top = t+'px';
+            }
+            document.onmouseup = function(event){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            }
+        }
+    })
+    new Vue({
+        el:'#app'
+    })
+</script>
+</html>

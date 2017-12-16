@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+    <script src="../js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+         <button id="btn" type="">点我啊</button>
+         <button onclick="change()">更新</button>
+         <button onclick="destroy()">销毁</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                msg:'hello stark'
+            },
+            beforeCreate(){
+               alert("实例创建之前");
+            },
+            created(){
+                alert("实例创建时");
+            },
+            beforeMount(){
+                alert("实例挂载之前");
+            },
+            mounted(){
+                $("#btn").click(function(){
+                    alert("哈哈，来咬我啊")
+                })
+                alert("实例挂载完成");
+            },
+            beforeUpdate(){
+                alert("实例更新之前");
+            },
+            updated(){
+                alert("实例更新完成");
+            },
+            beforeDestroy(){
+                alert("实例销毁之前");
+            },
+            destroyed(){
+                alert("实例销毁完成");
+            }
+        })
+        function change() {
+                vm.msg="哈哈，我是不是很贱呢"
+            }
+            function destroy(){
+                vm.msg="呵呵，榆林下雪了耶"
+            }
+    </script>
+</body>
+</html>

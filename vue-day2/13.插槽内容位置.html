@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <stark>
+            <div slot="one">我想替换第一个位置</div>
+            <div slot="two">我想替换第二个位置</div>
+            <div slot="three">我想替换第三个位置</div>
+            <div>我不是slot标签</div>
+        </stark>
+    </div>
+</body>
+<script>
+    Vue.component('stark',{
+        template:`
+        <div>
+            <span>首页</span>
+            <slot name="one">第一个位置</slot>
+            <slot name="two">第二个位置</slot>
+            <slot name="three">第三个位置</slot>
+            <slot>我来了</slot>
+        </div>
+        `,
+    })
+    let vm = new Vue({
+        el:'#app'
+    })
+</script>
+</html>

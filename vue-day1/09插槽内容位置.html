@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+    <script src="https://unpkg.com/vue"></script>
+    
+</head>
+<body>
+    <div id="app">
+        <alex>
+            <div slot="one">我想替换第一个位置</div>
+            <div slot="two">我想替换第二个位置</div>
+            <div slot="three">我想替换第三个位置</div>
+            <div>我不是slot，哈哈</div>
+        </alex>
+    </div>
+    <script>
+        // 全局不加s
+        Vue.component('alex',{
+            template:`
+            <div>
+                <span>首页</span>
+                <slot name="one">第一个位置</solt>
+                <slot name="two">第二个位置</solt>
+                <slot name="three">第三个位置</solt>
+                <slot>来咬我啊</slot>
+            </div>
+            `,
+            
+        }) 
+        let vm = new Vue({
+            el:"#app"
+        })   
+    </script>
+</body>
+</html>

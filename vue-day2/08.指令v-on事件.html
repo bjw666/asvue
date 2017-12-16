@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../bower_components/vue/dist/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{arr}}
+        <button type="" v-on:click="show">show</button>
+        <button type="" v-on:mouseover="move">move</button>
+        <button type="" v-on:dblclick="dblclick">dblclick</button>
+        <!-- v-on: 可以简写@ -->
+        <button type="" @dblclick="dblclick">dblclick</button>
+        <button type="" @click="add(666)">add</button>
+    </div>
+    <script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            arr:['11','22','33','44']
+        },
+        methods:{
+            show:function(){
+                console.log("调用了show方法");
+            },
+            move:function(){
+                console.log("触发了鼠标经过方法");
+            },
+            dblclick:function(){
+                console.log("触发了双击的方法");
+            },
+            add:function(data){
+                this.arr.push(data);
+            }
+        }
+    })
+    </script>
+</body>
+</html>
